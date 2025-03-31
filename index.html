@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Frequency Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="icon" href="site-data/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="site-data/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="site-data/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="site-data/favicon-16x16.png">
+    <link rel="manifest" href="site-data/site.webmanifest">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-content">
+          <i class="fas fa-wave-square logo-icon"></i>
+          <div>
+            <h1>Audio Frequency Analyzer</h1>
+            <p class="subtitle">Real-time audio frequency visualization</p>
+          </div>
+        </div>
+        <div class="theme-toggle">
+          <input type="checkbox" id="themeSwitch">
+          <label for="themeSwitch" class="theme-switch-label">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+            <span class="theme-switch-handle"></span>
+          </label>
+        </div>
+      </header>
+      <div class="main-content">
+        <div class="visualization-container">
+          <canvas id="visualizer"></canvas>
+          <div class="visualization-overlay" id="visualizationOverlay">
+            <div class="overlay-content">
+              <i class="fas fa-microphone"></i>
+              <p>Click "Start Analyzer" to begin</p>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <div class="control-group">
+            <button id="startBtn" class="btn btn-primary">
+              <i class="fas fa-microphone"></i> Start Analyzer </button>
+            <button id="stopBtn" class="btn btn-danger" disabled>
+              <i class="fas fa-stop"></i> Stop </button>
+          </div>
+          <div class="control-group">
+            <label for="visualizationMode">
+              <i class="fas fa-paint-brush"></i> Visualization Mode </label>
+            <select id="visualizationMode" class="form-control">
+              <option value="bars">Bars</option>
+              <option value="wave">Waveform</option>
+              <option value="circle">Circular</option>
+              <option value="particles">Particles</option>
+              <option value="spectrum">Spectrum</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="inputDevice">
+              <i class="fas fa-microphone"></i> Input Device </label>
+            <select id="inputDevice" class="form-control" disabled>
+              <option value="">-- Select Microphone --</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="outputDevice">
+              <i class="fas fa-volume-up"></i> Output Device </label>
+            <select id="outputDevice" class="form-control">
+              <option value="">Default Output</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="sensitivity">
+              <i class="fas fa-sliders-h"></i> Sensitivity: <span id="sensitivityValue">50%</span>
+            </label>
+            <input type="range" id="sensitivity" min="0" max="100" value="50" class="form-range">
+          </div>
+          <div class="control-group">
+            <label for="fftSize">
+              <i class="fas fa-chart-bar"></i> FFT Size </label>
+            <select id="fftSize" class="form-control">
+              <option value="32">32</option>
+              <option value="64">64</option>
+              <option value="128">128</option>
+              <option value="256" selected>256</option>
+              <option value="512">512</option>
+              <option value="1024">1024</option>
+              <option value="2048">2048</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="colorScheme">
+              <i class="fas fa-palette"></i> Color Scheme </label>
+            <select id="colorScheme" class="form-control">
+              <option value="rainbow">Rainbow</option>
+              <option value="fire">Fire</option>
+              <option value="ocean">Ocean</option>
+              <option value="forest">Forest</option>
+              <option value="monochrome">Monochrome</option>
+            </select>
+          </div>
+          <div class="control-group switch-control">
+            <label>
+              <input type="checkbox" id="smoothing" checked>
+              <span class="switch"></span>
+              <span class="switch-label">
+                <i class="fas fa-wave-sine"></i> Smoothing </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p>Audio Frequency Analyzer &copy; 2025 | Hosted on GitHub Pages</p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
